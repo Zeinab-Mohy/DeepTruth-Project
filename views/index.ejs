@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/node-fetch"></script>
+
+    <title>Home</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main" aria-controls="main" aria-expanded="false" aria-label="Toggle navigation" >
+            <i id="menuIcon" class="fa-solid fa-bars" style="color: white;"></i>
+          </button>
+          <img src="imges/Logo.png" alt="" class="img-logo">
+        <div class="collapse navbar-collapse" id="main">
+          <div class="navbar-collapse justify-content-center">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#check">Check</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="ml-auto">
+            <% if (name) {%>
+              <a href="profile"><img src="<%= avatar %>" height="50px" width="50px" style="border-radius: 50px;" alt=""></a>
+            <% }else{%>
+              <a class="ml-auto nav-link" href="#" id="loginLink">Log In</a>
+            <% }%>
+          </div>
+        </div>
+      </div>
+  </nav>
+    
+  <script>
+    var menuButton = document.querySelector('.navbar-toggler');
+    var menuIcon = document.getElementById('menuIcon');
+    var mainMenu = document.getElementById('main');
+
+    menuButton.addEventListener('click', function() {
+      menuIcon.classList.toggle('fa-bars');
+      menuIcon.classList.toggle('fa-times');
+      mainMenu.classList.toggle('show');
+    });
+  </script>
+  <div class="container text-center mt-6 " >
+    <h1 class="title display-2"><span class="deep">Deep</span> <span class="truth">Truth</span></h1>
+    <p style="color: white;">Empowering Truth In A Sea Of Deception</p>
+    <div class="row">
+      <div class="col-md-4 col-lg-12 mx-auto">
+        <img src="imges/mainPhoto.png" alt="" class="img-mainPhoto img-fluid">
+      </div>
+    </div>
+    <h3 style="color: white;padding: 50px;padding-top: 80px;" id="check" >Check To See Real Or Fake</h3><br>
+  </div>
+  <div class="container card-container d-flex justify-content-center" >
+    <div class="row">  
+        <div class="two col-md-12 col-lg-6">
+          <h3 class="videoimage">Video</h3>
+        <div class="advice-container ">
+          <form class="file-upload-form" id="DropArea1" action="/vsubmit" method="POST" enctype="multipart/form-data">
+            <label for="file" class="file-upload-label" >
+              <div class="file-upload-design">
+                <!-- <svg viewBox="0 0 640 512" height="1em">
+                  <path
+                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                  ></path>
+                </svg> -->
+                <p class="paragraph">Drag and Drop</p>
+                <div class="advice-details">Or <span class="upload">Upload</span> your Video</div>
+                <div class="small-paragraph">
+                  We Support mp4
+                </div>
+                <p style="color: white;">OR</p>
+                <div class="input-image">
+                  <span class="browse-button" onclick="document.getElementById('file1').click()">Browse Video</span>
+                  <!-- <span class="browse-button">Browse Image</span> -->
+                  <!-- <input class="check-button" type="submit"> -->
+                  <input id="file1" type="file" name="my_video" style="display: none;" accept="video/mp4,video/x-m4v,video/*"/>
+                </div>
+              </div>
+              <!-- <input id="file" type="file" /> -->
+              <input class="check-button" type="submit" value="Check">
+            </label>
+          </form>
+        </div>
+      </div>
+      <div class="one col-md-12 col-lg-6">
+        <h3 class="videoimage">Image</h3>
+      <div class="advice-container " >
+        <form class="file-upload-form" id="DropArea2" action="/submit" method="POST" enctype="multipart/form-data">
+          <label for="file" class="file-upload-label">
+            <div class="file-upload-design">
+              <p class="paragraph">Drag and Drop</p>
+              <div class="advice-details">Or <span class="upload">Upload</span> your Video</div>
+              <div class="small-paragraph">
+                We Support jpg,jpeg,png 
+              </div>
+              <p style="color: white;">OR</p>
+              <div class="input-image">
+                <span class="browse-button" onclick="document.getElementById('file2').click()">Browse Image</span>
+                <!-- <span class="browse-button">Browse Image</span> -->
+                <!-- <input class="check-button" type="submit"> -->
+  
+                <input id="file2" type="file" name="my_image" style="display: none;" accept="image/png,image/jpeg,image/*"/>
+                <!-- <input class="check-button" type="submit" value="Check"> -->
+
+              </div>
+            </div>
+            <input class="check-button" type="submit" value="Check">
+            <!-- <input type="submit" id="submitButton" style="display: none;"> -->
+            <!-- <a class="check-button" id="checkVideo" href="#" onclick="submitForm()">Check</a> -->
+            <!-- <input class="check-button" id="checkVideo" type="submit" value="Check" onclick="showResult()"> -->
+            <!-- <a class="check-button" id="checkVideo" onclick="showResult()">Check</a> -->
+          </label>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="questions">
+    <h3 class="questions-title text-center mt-6 col-lg-12">Frequently Asked Questions</h3><br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="infos">
+              <div class="image" style="font-size: 20px;">
+                <!-- Question -->
+                <br><br><br>
+                <p><i>What is Deepfake Detection?</i></p>
+              </div>
+              <div class="info">
+                  <div>
+                      <p class="name">
+                        Answer
+                      </p>
+                      <p class="function" style="font-size: 20px;">
+                        <i>Deepfake detection is the process of identifying and analyzing media to determine if it has been artificially manipulated or generated using deepfake technology. This includes detecting fake images and videos.</i>
+                      </p>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="infos">
+              <div class="image2" style="font-size: 20px;">
+                <!-- Question -->
+                <br><br><br>
+                <p><i>How accurate is your deepfake detection tool?</i></p>
+              </div>
+              <div class="info2">
+                  <div>
+                      <p class="name">
+                          Answer
+                      </p>
+                      <p class="function" style="font-size: 20px;">
+                        <i>Our deepfake detection tool has been trained on a large dataset of real and fake media, achieving a high accuracy rate. However, no tool can guarantee 100% accuracy due to the evolving nature of deepfake technology. We continuously update our algorithms to improve detection rates.</i>
+                      </p>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="infos">
+              <div class="image" style="font-size: 20px;">
+                <!-- Question  -->
+                <br><br><br>
+                <p><i>Is your deepfake detection tool free to use?</i></p>
+              </div>
+              <div class="info">
+                  <div>
+                      <p class="name">
+                        Answer
+                      </p>
+                      <p class="function" style="font-size: 20px;">
+                        <i>Yes, our deepfake detection tool is currently free to use as we are in a trial phase. We encourage users to test our service and provide feedback to help us improve.</i>
+                      </p>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container articals" style="padding: 50px;">
+    <h3 class="articals-title text-center mt-6 col-lg-12">Important Articals & Resources</h3><br>
+    <p class="p-articals-title text-center mt-6 col-lg-12">There is some artical why our website is important</p>
+    <div class="row" >
+      <div class="two col-md-6 col-lg-3" style="padding-bottom: 50px;">
+        <a href="https://medium.com/@charles-ross/will-ai-take-over-the-world-149ced9c06f7" style="text-decoration: none;">
+          <div class="articals-card">
+            <div class="img">
+              <img src="imges/1_xr0qgTxBYcHaK0xa44MBzg.webp" alt="" style="width: 290px;height: 200px; border-top-left-radius: 10px;
+    border-top-right-radius: 10px;">
+            </div>
+            <div class="text">
+              <p class="p"> Blog </p>
+              <p class="h3"> Will AI Take Over the World? </p>
+              <!-- <a href="" class="h3"></a> -->
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="one col-md-6 col-lg-3" style="padding-bottom: 50px;">
+        <a href="https://medium.com/a-chatbots-life/the-real-dangers-of-ai-2cf43f64bb0f" style="text-decoration: none;" >
+          <div class="articals-card">
+            <div class="img">
+              <img src="imges/0_uSxw_PLSZzljg9gr.webp" alt="" style="width: 290px;height: 200px; border-top-left-radius: 10px;
+    border-top-right-radius: 10px;">
+            </div>
+            <div class="text">
+              <p class="p"> Blog </p>
+              <p class="h3"> The Real Dangers of AI</p>
+              <!-- <a href="" class="h3"></a> -->
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="four col-md-6 col-lg-3" style="padding-bottom: 50px;">
+        <a href="https://medium.com/@Paixbless/deepfake-how-ai-generated-media-could-transform-our-world-730ae24e80b2" style="text-decoration: none;">
+          <div class="articals-card">
+            <div class="img">
+              <img src="imges/0_rxhDkNMOiL0Mp1HR.webp" alt="" style="width: 290px;height: 200px; border-top-left-radius: 10px;
+    border-top-right-radius: 10px;">
+            </div>
+            <div class="text">
+              <p class="p"> Blog </p>
+              <p class="h3"> How AI Generated Media Could Transform Our World? </p>
+              <!-- <a href="" class="h3"></a> -->
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="three col-md-6 col-lg-3" style="padding-bottom: 50px;">
+        <a href="https://medium.com/@hasnamariyamvp/deepfakes-all-you-need-to-know-and-how-to-stay-safe-06221c62fc54" style="text-decoration: none;">
+          <div class="articals-card">
+            <div class="img">
+              <img src="imges/1_W1AoyUQOqVuHIFG6rmFLyw.webp" alt="" style="width: 290px;height: 200px; border-top-left-radius: 10px;
+    border-top-right-radius: 10px;">
+            </div>
+            <div class="text">
+              <p class="p"> Blog </p>
+              <p class="h3"> Deepfakes: All You Need to Know and How to Stay Safe </p>
+              <!-- <a href="" class="h3"></a> -->
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer1">
+    <div class="row">
+      <div class="col-lg-12 ">
+        <div class="img-container">
+          <img src="imges/footer2.png" alt="" class="img-fluid">          <div class="text-footer ">
+          <!-- <img src="imges/footer.png" alt="" class="img-fluid">          <div class="text-footer "> -->
+              <!-- <p >The goal is to help you reach to <span class="footer-truth">the truth</span></p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer pt-5 pb-5 text-center text-white-50 text-md-start">
+    <div class="container" id="f">
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="info d-flex justify-content-center" >
+                  <!-- <h1>Deep Truth</h1> -->
+                  <h3 class="title display-4"><span class="deep">Deep</span> <span class="truth">Truth</span></h3>
+                    <!-- <img src="imges/Logo.png" alt="" class="mb-5"> -->
+                    <!-- <p class="mb-4">
+                        Project Sight                                                                 
+                    </p>
+                    <p class="mb-4">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque eum, aperiam doloribus dignissimos esse numquam ipsum, tempore aliquam neque totam reprehenderit? Accusamus recusandae error consequatur, quo tempora tenetur. Maxime, id.
+                    </p><br> -->
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-2">
+                <div class="links" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;">
+                    <h5 class="text-white">Links</h5>
+                    <div class="list pt-4">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="list-style-type:disc;">
+                            <li class="nav-item">
+                                <a class="nav-link py-lg-1 " href="/">HOME</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link py-lg-1" href="/#check">CHECK</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link py-lg-1" href="#f">CONTACT</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-2">
+                        <div class="Aboutus" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;">
+                            <h5 class="text-white">Created By</h5>
+                            <div class="list pt-4">
+                                <div class="copyright">
+                                  <span>A to Z Team</span><br>
+                                  <div>&copy;2024 - <span>AtoZ</span></div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="ContactUs" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;">
+                    <h5 class="text-white">Contact Us :</h5>
+                        <p>Email :</p>
+                        <a href="mailto:zeinabmohy700@gmail.com" style="color: gray;"><p class="my-2">zeinabmohy700@gmail.com</p></a>
+                        <!-- <p class="my-2">+021025972355</p> -->
+                        <h6>Hot Line</h6>
+                        <p class="my-2">19011</p>
+                        <!-- <a class="btn btn-primary rounded-pill main-btn w-100" id="email" href="https://usc.edu.eg/" -->
+                            <!-- style="color:white ;">USC Website</a> -->
+                        <!-- <ul class="d-flex mt-5 list-unstyled gap-4">
+                            <a class="d-block text-light" href="#">
+                                <i class="fa-brands fa-facebook fa-lg facebook rounded-circle p-2"></i>
+                            </a>
+                            <a class="d-block text-light" href="#">
+                                <i class="fa-brands fa-twitter fa-lg twitter rounded-circle p-2"></i>
+                            </a>
+                            
+                            <a class="d-block text-light" href="https://www.youtube.com/user/UniversityOfSadat">
+                                <i class="fa-brands fa-youtube fa-lg youtube rounded-circle p-2"></i>
+                            </a>
+                        </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+<div class="login-container" id="loginContainer">
+  <div class="login-form">
+    <form  action="/login" method="post">
+      <h2 style="font-weight: bold; color: white;">Log In</h2>
+      <label for="email" style="position: relative; right: 12px;">Email</label>
+      <input type="email" id="email" name="email" >
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" >
+      <button type="submit">Sign in</button>
+      <span class="close" id="closeForm" style="color: white;">&times;</span>
+      <p class="signup" style="color:  rgba(156, 163, 175, 1);">Don't have an account?
+        <a href="register" class="" style="text-decoration: none;color: white;">Sign up</a>
+      </p>
+    </form>
+    <% if (typeof showError !== 'undefined' && showError) { %>
+      <div class="error-box">
+        <p><%= message %></p>
+      </div>
+      <% } %>
+  </div>
+</div>
+<div class="checkResult-container " id="checkResultContainer">
+  <% if (prediction === "fake"||prediction === "0") {%>
+  <div id="checkResult-content">
+    <!-- <h2>This is a Check Result of the image</h2> -->
+      <% if (prediction=="0") {%>
+        <iframe width="560" height="315" src="<%=vidPath%>" frameborder="0" allowfullscreen></iframe>
+        <% } else { %>
+          <img src="<%=imgPath%>" height="300px" width="300px">
+        <% }%>
+        <!-- <iframe width="560" height="315" src="<%=vidPath%>" frameborder="0" allowfullscreen></iframe> -->
+        <!-- <video src="<%=vidPath%>" height="300px" width="300px"></video> -->
+        <h2 id="prediction" style="color: red;"> <i> FAKE </i></h2>
+      <span class="close" style="color: white;" onclick="hideResult()">&times;</span>
+  </div>
+  <% } else if (prediction === "real"||prediction === "1") { %>
+    <div id="checkResult-content">
+      <!-- <h2>This is a Check Result of the Video</h2> -->
+        <% if (prediction=="1") {%>
+        <iframe width="560" height="315" src="<%=vidPath%>" frameborder="0" allowfullscreen></iframe>
+        <% } else { %>
+            <img src="<%=imgPath%>" height="300px" width="300px">
+          <% }%>
+          <!-- <img src="<%=imgPath%>" height="300px" width="300px"> -->
+          <!-- <iframe width="560" height="315" src="<%=vidPath%>" frameborder="0" allowfullscreen></iframe> -->
+          <!-- <video src="<%=vidPath%>" height="300px" width="300px"></video> -->
+          <h2 id="prediction" style="color: green;"> <i> REAL </i></h2>
+        <span class="close" style="color: white;" onclick="hideResult()">&times;</span>
+    </div>
+  <% } %>
+    <!-- <p>Click outside this box or the close button to close it.</p> -->
+</div>
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const loginLink = document.getElementById('loginLink');
+          const loginContainer = document.getElementById('loginContainer');
+          const errorBox = document.getElementsByClassName('error-box');
+          const closeForm = document.getElementById('closeForm');
+
+          loginLink.addEventListener('click', function (event) {
+              event.preventDefault();
+              loginContainer.style.display = 'block';
+              errorBox.style.display = 'block';
+          });
+
+          closeForm.addEventListener('click', function () {
+              loginContainer.style.display = 'none';
+              errorBox.style.display = 'none';
+          });
+      });
+  </script>
+  <script>
+
+    function submitForm() {
+        document.getElementById('submitButton').click();
+        showResult();
+    }
+
+    function showResult() {
+        document.getElementById('checkResultContainer').style.display = 'flex';
+    }
+    function hideResult() {
+        var resultContainer = document.getElementById('checkResultContainer');
+        resultContainer.style.display = 'none';
+    }
+</script>
+
+<!-- <script>
+  const newDropArea = document.getElementById('DropArea1');
+  const newFile = document.getElementById('file1');
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    newDropArea.addEventListener(eventName, preventDefaults, false);
+  });
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    newDropArea.addEventListener(eventName, highlight, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    newDropArea.addEventListener(eventName, unhighlight, false);
+  });
+
+  newDropArea.addEventListener('drop', handleDrop, false);
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function highlight() {
+    newDropArea.classList.add('highlight');
+  }
+
+  function unhighlight() {
+    newDropArea.classList.remove('highlight');
+  }
+
+  function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    handleFiles(files);
+  }
+
+  function handleFiles(files) {
+    newFile.files = files;
+  }
+</script> -->
+<!-- <script>
+  const DropArea2 = document.getElementById('DropArea2');
+  const fileInput2 = document.getElementById('file2');
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    DropArea2.addEventListener(eventName, preventDefaults, false);
+  });
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    DropArea2.addEventListener(eventName, highlight, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    DropArea2.addEventListener(eventName, unhighlight, false);
+  });
+
+  DropArea2.addEventListener('drop', handleDrop, false);
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function highlight() {
+    DropArea2.classList.add('highlight');
+  }
+
+  function unhighlight() {
+    DropArea2.classList.remove('highlight');
+  }
+
+  function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    handleFiles(files);
+  }
+  function handleFiles(files) {
+    fileInput2.files = files;
+  }
+  console.log(`fileinput 1 ${fileInput2.files.length}`)
+  // if (!fileInput2.files.length) {
+  //   console.log('Please select a file!');
+  // }
+
+</script> -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  setupDropArea('DropArea1', 'file1');
+  setupDropArea('DropArea2', 'file2');
+
+  function setupDropArea(dropAreaId, fileInputId) {
+    const dropArea = document.getElementById(dropAreaId);
+    const fileInput = document.getElementById(fileInputId);
+
+    if (!dropArea) {
+      console.error(`Drop area not found: ${dropAreaId}`);
+      return;
+    }
+
+    if (!fileInput) {
+      console.error(`File input not found: ${fileInputId}`);
+      return;
+    }
+
+    console.log(`Setting up drop area: ${dropAreaId} for file input: ${fileInputId}`);
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropArea.addEventListener(eventName, () => highlight(dropArea), false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, () => unhighlight(dropArea), false);
+    });
+
+    dropArea.addEventListener('drop', (e) => handleDrop(e, fileInput), false);
+  }
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(`Prevented defaults for ${e.type}`);
+  }
+
+  function highlight(dropArea) {
+    console.log(`Highlighting ${dropArea.id}`);
+    dropArea.classList.add('highlight');
+  }
+
+  function unhighlight(dropArea) {
+    console.log(`Unhighlighting ${dropArea.id}`);
+    dropArea.classList.remove('highlight');
+  }
+
+  function handleDrop(e, fileInput) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    console.log(`Handling drop for ${fileInput.id}`);
+    handleFiles(files, fileInput);
+  }
+
+  function handleFiles(files, fileInput) {
+    const dataTransfer = new DataTransfer();
+    Array.from(files).forEach(file => dataTransfer.items.add(file));
+    fileInput.files = dataTransfer.files;
+    console.log(`Files added to ${fileInput.id}`, fileInput.files);
+  }
+});
+
+
+
+</script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/27c34abb92.js" crossorigin="anonymous"></script>
+</body>
+</html>

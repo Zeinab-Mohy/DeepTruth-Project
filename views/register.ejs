@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Register</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main" aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
+                <i id="menuIcon" class="fa-solid fa-bars" style="color: white;"></i>
+            </button>
+            <img src="imges/Logo.png" alt="" class="img-logo">
+            <div class="collapse navbar-collapse" id="main">
+            <div class="navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#check">Check</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ml-auto">
+                <a class="ml-auto nav-link" href="#" id="loginLink">Log In</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container signup-container d-flex justify-content-center" id="signupContainer">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="signup-form">
+                    <form action="/register" method="post">
+                        <h2 style="font-weight: bold; color: white;">Sign Up</h2>
+                        <label for="name" style="position: relative; right: 12px;">Name</label>
+                        <input type="text" id="name" name="name" value="<%=name%>">
+                        <label for="email" style="position: relative; right: 12px;">Email</label>
+                        <input type="text" id="email" name="email" value="<%=email%>">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" >
+                        <button type="submit">Sign Up</button>
+                        <p class="signup" style="color:  rgba(156, 163, 175, 1);"> Already have an account?
+                            <a href="login" class="" style="text-decoration: none;color: white;">Log In</a>
+                        </p>
+                    </form>
+                    <% if (typeof showError !== 'undefined' && showError) { %>
+                        <div class="error-box">
+                            <p><%= message %></p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login-container" id="loginContainer">
+        <div class="login-form">
+            <form action="/login" method="post">
+                <h2 style="font-weight: bold; color: white;">Log In</h2>
+                <label for="email" style="position: relative; right: 12px;">Email</label>
+                <input type="text" id="email" name="email" value="<%=email%>" >
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" >
+                <button type="submit">Sign in</button>
+                <span class="close" id="closeForm" style="color: white;">&times;</span>
+                <p class="signup" style="color:  rgba(156, 163, 175, 1);">Don't have an account?
+                <a href="register" class="" style="text-decoration: none;color: white;">Sign up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <script>
+        var menuButton = document.querySelector('.navbar-toggler');
+        var menuIcon = document.getElementById('menuIcon');
+        var mainMenu = document.getElementById('main');
+    
+        menuButton.addEventListener('click', function() {
+        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-times');
+        mainMenu.classList.toggle('show');
+        });
+    </script>
+    <div class="container footer1">
+        <div class="row">
+        <div class="col-lg-12 ">
+            <div class="img-container">
+                <img src="imges/footer2.png" alt="" class="img-fluid">
+            <!-- <img src="imges/footer.png" alt="" class="img-fluid">          
+            <div class="text-footer ">
+                <p >The goal is to help you reach to <span class="footer-truth">the truth</span></p>
+            </div> -->
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="footer pt-5 pb-5 text-center text-white-50 text-md-start">
+        <div class="container" id="f">
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <div class="info d-flex justify-content-center" >
+                      <!-- <h1>Deep Truth</h1> -->
+                      <h3 class="title display-4"><span class="deep">Deep</span> <span class="truth">Truth</span></h3>
+                        <!-- <img src="imges/Logo.png" alt="" class="mb-5"> -->
+                        <!-- <p class="mb-4">
+                            Project Sight                                                                 
+                        </p>
+                        <p class="mb-4">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque eum, aperiam doloribus dignissimos esse numquam ipsum, tempore aliquam neque totam reprehenderit? Accusamus recusandae error consequatur, quo tempora tenetur. Maxime, id.
+                        </p><br> -->
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="links" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;">
+                        <h5 class="text-white">Links</h5>
+                        <div class="list pt-4">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="list-style-type:disc;">
+                                <li class="nav-item">
+                                    <a class="nav-link py-lg-1 " href="/">HOME</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link py-lg-1" href="/#check">CHECK</a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link py-lg-1" href="#f">CONTACT</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                            <div class="Aboutus" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;">
+                                <h5 class="text-white">Created By</h5>
+                                <div class="list pt-4">
+                                    <div class="copyright">
+                                      <span>A to Z Team</span><br>
+                                      <div>&copy;2024 - <span>AtoZ</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="ContactUs" style="font-family:Arial, Helvetica, sans-serif; font-size: 10px;">
+                        <h5 class="text-white">Contact Us :</h5>
+                            <p>Email :</p>
+                            <a href="mailto:zeinabmohy700@gmail.com" style="color: gray;"><p class="my-2">zeinabmohy700@gmail.com</p></a>
+                            <!-- <p class="my-2">+021025972355</p> -->
+                            <h6>Hot Line</h6>
+                            <p class="my-2">19011</p>
+                            <!-- <a class="btn btn-primary rounded-pill main-btn w-100" id="email" href="https://usc.edu.eg/" -->
+                                <!-- style="color:white ;">USC Website</a> -->
+                            <!-- <ul class="d-flex mt-5 list-unstyled gap-4">
+                                <a class="d-block text-light" href="#">
+                                    <i class="fa-brands fa-facebook fa-lg facebook rounded-circle p-2"></i>
+                                </a>
+                                <a class="d-block text-light" href="#">
+                                    <i class="fa-brands fa-twitter fa-lg twitter rounded-circle p-2"></i>
+                                </a>
+                                
+                                <a class="d-block text-light" href="https://www.youtube.com/user/UniversityOfSadat">
+                                    <i class="fa-brands fa-youtube fa-lg youtube rounded-circle p-2"></i>
+                                </a>
+                            </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const loginLink = document.getElementById('loginLink');
+        const loginContainer = document.getElementById('loginContainer');
+        const closeForm = document.getElementById('closeForm');
+    
+        loginLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            loginContainer.style.display = 'block';
+        });
+    
+        closeForm.addEventListener('click', function () {
+            loginContainer.style.display = 'none';
+        });
+    });
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/27c34abb92.js" crossorigin="anonymous"></script>  
+</body>
+</html>
